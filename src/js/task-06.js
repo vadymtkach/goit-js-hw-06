@@ -5,15 +5,18 @@
 
 const inputEl = document.querySelector("#validation-input");
 
+function setInputClass(classNameToAdd, classNameToRemove) {
+  inputEl.classList.add(classNameToAdd);
+  inputEl.classList.remove(classNameToRemove);
+}
+
 inputEl.addEventListener("blur", () => {
   const inputValue = inputEl.value.trim();
   const expectedLength = parseInt(inputEl.getAttribute("data-length"), 10);
 
   if (inputValue.length === expectedLength) {
-    inputEl.classList.add("valid");
-    inputEl.classList.remove("invalid");
+    setInputClass("valid", "invalid");
   } else {
-    inputEl.classList.add("invalid");
-    inputEl.classList.remove("valid");
+    setInputClass("invalid", "valid");
   }
 });

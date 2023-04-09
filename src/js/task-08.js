@@ -1,28 +1,27 @@
-// отримути доступ до форми і її елементів
+// отримуємо доступ до форми і її елементів
 const form = document.querySelector('.login-form');
 const emailInput = form.elements.email;
 const passwordInput = form.elements.password;
 
-// налаштовути обробник події submit на формі
+// налаштовуємо обробник події submit на формі
 form.addEventListener('submit', (event) => {
-  // запобігти перезавантаженню сторінки
-  event.preventDefault();
+// запобігаємо перезавантаженню сторінки
+event.preventDefault();
 
-  // перевірити чи всі поля заповнені
-  if (!emailInput.value || !passwordInput.value) {
-    alert('Please fill in all fields.');
-    return;
-  }
+// перевіряємо чи всі поля заповнені
+if (!emailInput.value.trim() || !passwordInput.value.trim()) {
+alert('Please fill in all fields.');
+return;
+}
 
-  // створити об'єкт з даними форми
-  const formData = {
-    email: emailInput.value,
-    password: passwordInput.value,
-  };
+// створюємо об'єкт з даними форми
+const formData = {
+email: emailInput.value.trim(),
+password: passwordInput.value.trim(),
+};
 
-  
-  console.log(formData);
+console.log(formData);
 
-  // очищуємо значення полів форми
-  form.reset();
+// очищуємо значення полів форми
+event.target.reset();
 });
